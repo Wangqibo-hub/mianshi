@@ -14,11 +14,12 @@ public class DemoService {
         this.demoRepository = demoRepository;
     }
 
-    public void add(Integer num1, Integer num2) {
+    public Integer add(Integer num1, Integer num2) {
         DemoAdd demoAdd = new DemoAdd();
         demoAdd.setNum1(num1);
         demoAdd.setNum2(num2);
         demoAdd.setSum(num1 + num2);
         demoRepository.add(demoAdd);
+        return demoAdd.getSum();
     }
 }

@@ -2,11 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class DemoController {
 
     private DemoService demoService;
@@ -18,8 +17,13 @@ public class DemoController {
     }
 
     @PostMapping("/add/{num1}/{num2}")
-    public String sum(@PathVariable("num1") Integer num1, @PathVariable("num2") Integer num2) {
-        demoService.add(num1, num2);
-        return "success";
+    @ResponseBody
+    public Integer sum(@PathVariable("num1") Integer num1, @PathVariable("num2") Integer num2) {
+        return demoService.add(num1, num2);
+    }
+
+    @GetMapping("/index")
+    public String index() {
+        return "index";
     }
 }

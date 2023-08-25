@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="sum">
+  num1:<input id="num1">
+  <br>
+  num2:<input id="num2">
+</div>
+<button id="submit">submit</button>
+<br>
+result:<span id="result" th:text="${data}"></span>
+
+<script type="text/javascript">
+  $("#submit").click(function () {
+    var num1 = $("#num1").val();
+    var num2 = $("#num2").val();
+    $.ajax({
+      url: "add/" + num1 + "/" + num2,
+      type: "post",
+      success: function (data) {
+        $("#result").html(data);
+      },
+    })
+  });
+</script>
+</body>
+</html>
